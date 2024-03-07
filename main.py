@@ -45,12 +45,19 @@ def dic_sort(dict):
 
 def get_common_words(input_text):
     text = input_text.lower()
+    text = text.replace(".", "")
+    text = text.replace(",", "")
     words = text.split()
+    dull_words = ["the",  "a", "on", "in", "and", "i", "of", "to", "my", "was", "that", "had", "but", "with", "he", "which", "his", "me", "as", "their", "been", "would"
+        "not", "by", "you", "for", "it", "her", "she", "from", "this", "have", "be", "at", "when", "is", "were", "your", "an", "they", "so", "could", "one", "will", "if",
+        "all", "not", "would", "or", "we", "are", "no", "who", "should", "more", "these", "me", "him", "some", "yet", "now", "before", "our", "upon", "into", "its", 
+        "what", "only", "did", "am", "every",  "shall", "first", "do", "own", "towards", "even",  "those",  "than", "might", "myself", "may", "saw", "can", "most", "such",
+        "then", "whom", "how", "them", "being", "where", "said", "any", "again"]
     word_dict ={}
     for word in words:
         if word in word_dict:
             word_dict[word] += 1
-        else:
+        elif word not in dull_words:
             word_dict[word] = 1
     common_words = sort_words(word_dict)
     return common_words    
